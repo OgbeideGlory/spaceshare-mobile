@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "SpaceShare",
+    "slug": "spaceshare-mobile",
+    "scheme": "spaceshare",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ],
+      "expo-image",
+      "@react-native-community/datetimepicker",
+      "expo-web-browser",
+      "expo-sharing",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "SpaceShare uses the camera to scan guests\u2019 QR codes when they check in.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "SpaceShare uses your photos for your profile picture and your space listings.",
+          "cameraPermission": "SpaceShare uses the camera to take photos of your space.",
+          "microphonePermission": false
+        }
+      ],
+      "expo-notifications"
+    ]
+  }
+}
