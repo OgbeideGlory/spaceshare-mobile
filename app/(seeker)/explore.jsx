@@ -1,28 +1,28 @@
-// PLACEHOLDER: Tom replaces this whole file with the real screen later.
-import { Text, View } from 'react-native'
+import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Button from '@/components/ui/Button'
-import { useAuth } from '@/hooks/useAuth'
+import CategorySection from '@/components/home/CategorySection'
+import FeaturedSpacesSection from '@/components/home/FeaturedSpacesSection'
+import HeroSection from '@/components/home/HeroSection'
+import HostCtaSection from '@/components/home/HostCtaSection'
+import HowItWorksSection from '@/components/home/HowItWorksSection'
+import TrustStrip from '@/components/home/TrustStrip'
+import Footer from '@/components/layout/Footer'
+import Navbar from '@/components/layout/Navbar'
 
+// The landing page (the web's HomePage). Each section lives in src/components/home/.
 export default function ExploreScreen() {
-  const { user, logout } = useAuth()
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 items-center justify-center px-6">
-        <Text className="text-2xl font-bold text-gray-900">Explore</Text>
-        <Text className="mt-2 text-center text-base text-gray-600">
-          Coming soon. Tom is building this screen.
-        </Text>
-        {user ? (
-          <Button variant="outline" onPress={logout} className="mt-6 self-center">
-            Log out ({user.email})
-          </Button>
-        ) : (
-          <Button variant="accent" href="/login" className="mt-6 self-center">
-            Log in
-          </Button>
-        )}
-      </View>
+    <SafeAreaView edges={['top']} className="flex-1 bg-white">
+      <Navbar />
+      <ScrollView>
+        <HeroSection />
+        <TrustStrip />
+        <CategorySection />
+        <HowItWorksSection />
+        <FeaturedSpacesSection />
+        <HostCtaSection />
+        <Footer />
+      </ScrollView>
     </SafeAreaView>
   )
 }
