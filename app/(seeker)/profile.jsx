@@ -1,28 +1,22 @@
-// PLACEHOLDER: Tom replaces this whole file with the real screen later.
-import { Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import AccountSettings from '@/components/account/AccountSettings'
+import SignInPrompt from '@/components/auth/SignInPrompt'
+import AppScreen from '@/components/layout/AppScreen'
 import Button from '@/components/ui/Button'
 import { useAuth } from '@/hooks/useAuth'
 
+// "My profile": name, phone, photo and password (the web's ProfilePage).
+// Changed for mobile: Log out is here too (on the web it's in the header menu).
 export default function ProfileScreen() {
   const { user, logout } = useAuth()
+  if (!user) {
+    return <SignInPrompt title="Profile" text="Log in or create an account to book spaces." />
+  }
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 items-center justify-center px-6">
-        <Text className="text-2xl font-bold text-gray-900">Profile</Text>
-        <Text className="mt-2 text-center text-base text-gray-600">
-          Coming soon. Tom is building this screen.
-        </Text>
-        {user ? (
-          <Button variant="outline" onPress={logout} className="mt-6 self-center">
-            Log out ({user.email})
-          </Button>
-        ) : (
-          <Button variant="accent" href="/login" className="mt-6 self-center">
-            Log in
-          </Button>
-        )}
-      </View>
-    </SafeAreaView>
+    <AppScreen showBack={false}>
+      <AccountSettings title="My profile" />
+      <Button variant="outline" onPress={logout} className="mt-8 self-stretch">
+        Log out
+      </Button>
+    </AppScreen>
   )
 }
